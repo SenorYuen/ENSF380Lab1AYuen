@@ -62,16 +62,6 @@ public class Application {
 				num1 = operand_retriever.nextDouble();
 				System.out.println("Result: " + factorial(num1));
 				break;
-			case "sine":
-				System.out.println("Enter a number: ");
-				num1 = operand_retriever.nextDouble();
-				System.out.println("Result: " + sine(num1));
-				break;
-			case "cosine":
-				System.out.println("Enter a number: ");
-				num1 = operand_retriever.nextDouble();
-				System.out.println("Result: " + cosine(num1));
-				break;
 			}
 			Scanner continuer = new Scanner(System.in);
 			System.out.println("Press 1 to continue, Press anything else to quit: ");
@@ -113,5 +103,6 @@ public class Application {
 			return n * factorial(n-1);
 		}
 	}
+
 
 }
