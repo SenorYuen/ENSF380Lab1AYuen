@@ -22,7 +22,8 @@ public class Application {
 			}
 			else {
 				Scanner scanner = new Scanner(System.in);
-				System.out.println("Enter operation (add, subtract, multiply, divide, factorial, power, square root, log, log10, sine, cosine, tangent ): ");
+				System.out.println("Enter operation (add, subtract, multiply, divide, factorial, power, square root, log, log10, "
+						+ "\nsine, cosine, tangent, permutations):");
 				operation = scanner.next();
 			}
 			Scanner operand_retriever = new Scanner(System.in);
@@ -98,6 +99,13 @@ public class Application {
 				System.out.println("Enter a number: ");
 				num1 = operand_retriever.nextDouble();
 				System.out.println("Result: " + tan(num1));
+				break;
+			case "permutations":
+				System.out.println("Enter a number for the number of elements: ");
+				int elements = operand_retriever.nextInt();
+				System.out.println("Enter a number for the number of selections: ");
+				int selections = operand_retriever.nextInt();
+				System.out.println("Result: " + recursivePermutation(elements, selections));
 				break;
 			}
 			Scanner continuer = new Scanner(System.in);
@@ -186,6 +194,34 @@ public class Application {
 		double angleDegrees = Math.toRadians(angleRadians);
 	    return Math.tan(angleDegrees);
 	}
-
+	
+	public static void checkPermutationArgs(int elements, int selections) {
+		if (elements < 0) {
+			throw new IllegalArgumentException("Provided elements cannot be less than 0.");
+		}
+		if (selections < 0 || selections > 100) {
+			throw new IllegalArgumentException("Number of selections must be between 0 and 100.");
+		}
+	    if (selections > elements) {
+	        throw new IllegalArgumentException("The number of selections cannot exceed the provided number of elements.");
+	    }
+	}
+	
+	public static int recursivePermutation(int elements, int selections) {
+		checkPermutationArgs(elements, selections);
+	    if (selections == 0 || selections == elements) {
+	        return 1;
+	    }
+	    return elements * recursivePermutation(elements - 1, selections - 1);
+	}
+	
+	public static int iterativePermutation(int elements, int selections) {
+		checkPermutationArgs(elements, selections);
+	    int result = 1;
+	    for (int i = 0; i < selections; i++) {
+	        result *= (elements - i);
+	    }
+	    return result;
+	}
 
 }
