@@ -113,13 +113,5 @@ public class Application {
 			return n * factorial(n-1);
 		}
 	}
-	
-	public static double sine(double a) {
-		return Math.sin(a);
-	}
-	
-	public static double cosine(double a) {
-		return Math.cos(a);
-	}
 
 }
